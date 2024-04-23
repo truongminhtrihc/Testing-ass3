@@ -13,4 +13,4 @@ test_NE001001()
 
 
 # Quit the WebDriver
-driver.close()
+driver.quit()
