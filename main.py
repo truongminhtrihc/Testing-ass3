@@ -8,7 +8,7 @@ import time
 
 
 # Gọi các hàm test từ func1.py
-test_NE001014()
+test_NE003001()
 
 
 

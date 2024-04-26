@@ -145,140 +145,196 @@ def fillToForm(title=None,day=None, month=None,year=None,isShowmore=False,descri
     except TimeoutException:
         print("Vui lòng thực hiện lại chức năng vì thời gian load phần tử quá lâu.")
 
-def calendar():
-    try:
-        # Click vào cuốn lịch
-        open_calendar_button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "id_timestart_calendar")))
-
-        # Scroll đến phần tử để nó trở nên nhìn thấy được
-        driver.execute_script("arguments[0].scrollIntoView();", open_calendar_button)
-
-        # Click vào nút mở lịch
-        driver.execute_script("arguments[0].click();", open_calendar_button)
-        WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, "dateselector-calendar-content")))
-
-        time.sleep(3)
-        # Chọn ngày
-        # day_element = WebDriverWait(driver, 20,2).until(EC.element_to_be_clickable((By.ID, "calendaryui_3_18_1_1_1713887201701_156_pane_0_7_9")))
-        # driver.execute_script("arguments[0].click();", day_element)
-        # time.sleep(2)
-    except TimeoutException:
-        print("Vui lòng thực hiện lại chức năng vì thời gian load phần tử quá lâu.")
-
-        
-def fillToForm_withCalendar():
-    try:
-        # title
-        name_input = WebDriverWait(driver, 20,2).until(EC.element_to_be_clickable((By.ID, "id_name")))
-        name_input.send_keys("kiểm tra GK")
-        time.sleep(2)
-        # Select Date
-        calendar()
-        
-        # click show more 
-        show_more_link = WebDriverWait(driver, 20,2).until(EC.element_to_be_clickable((By.CLASS_NAME, "moreless-toggler")))
-        show_more_link.click()
-        time.sleep(2)
-        
-        ################################ begin desciption########################################
-        # Chuyển tới iframe
-        iframe = WebDriverWait(driver, 20,2).until(EC.frame_to_be_available_and_switch_to_it((By.ID, "id_description_ifr")))
-        # desciption
-        p_textarea = WebDriverWait(driver, 20,2).until(EC.element_to_be_clickable((By.ID,"tinymce")))
-        # Cuộn đến phần tử
-        driver.execute_script("arguments[0].scrollIntoView();", p_textarea)
-
-        # # Sử dụng ActionChains để nhấp vào phần tử
-        # actions = ActionChains(driver)
-        # actions.move_to_element(element_to_click).click().perform()
-        p_textarea.click()
-        p_textarea.send_keys("kiểm tra 45p")
-        time.sleep(2)
-        # Quay lại khung cha
-        driver.switch_to.default_content()
-        ################################ end desciption########################################
-        
-        # location
-        location_input = WebDriverWait(driver, 20,2).until(EC.element_to_be_clickable((By.ID,"id_location")))
-        location_input.send_keys("H6 112")
-        time.sleep(2)
-        # Chọn input "Without duration"
-        without_duration_radio = WebDriverWait(driver, 20,2).until(EC.element_to_be_clickable((By.XPATH,"//input[@id='id_duration_0']")))
-        without_duration_radio.click()
-        time.sleep(2)
-        # save
-        save_button = WebDriverWait(driver, 20,2).until(EC.element_to_be_clickable((By.XPATH,"//button[contains(text(),'Save')]")))
-        save_button.click()
-        time.sleep(2)
-        WebDriverWait(driver, 20,2).until(EC.invisibility_of_element_located((By.XPATH, "//button[contains(text(),'Save')]")))
-        time.sleep(10)
-    except TimeoutException:
-        print("Vui lòng thực hiện lại chức năng vì thời gian load phần tử quá lâu.")
-
-    
-def test_NE001001():
+def start():
     login("student", "sandbox")
     accessToDashboard()
     clickToNewevent()
+    
+################################## mudule 1 ############################################
+def test_NE001001():
+    start()
     fillToForm("kiem tra GK","9","4","2024",True,"kiểm tra 45p","H6 112",0)
 def test_NE001003():
-    login("student", "sandbox")
-    accessToDashboard()
-    clickToNewevent()
+    start()
     fillToForm("kiem tra GK","9","4","2024",False)
 def test_NE001004():
-    login("student", "sandbox")
-    accessToDashboard()
-    clickToNewevent()
+    start()
     fillToForm("kiem tra GK","9","4","2024",True,"kiểm tra 45p","H6 112",1,"12","4","2024")
 def test_NE001005():
-    login("student", "sandbox")
-    accessToDashboard()
-    clickToNewevent()
+    start()
     fillToForm("kiem tra GK","9","4","2024",True,"kiểm tra 45p","H6 112",2,None,None,None,"45")
 def test_NE001006():
-    login("student", "sandbox")
-    accessToDashboard()
-    clickToNewevent()
+    start()
     fillToForm("kiem tra GK","9","4","2024",True,"kiểm tra 45p","H6 112",0,None,None,None,None,True,"2") 
 def test_NE001007():
-    login("student", "sandbox")
-    accessToDashboard()
-    clickToNewevent()
+    start()
     fillToForm() 
 def test_NE001008():
-    login("student", "sandbox")
-    accessToDashboard()
-    clickToNewevent()
+    start()
     fillToForm("kiem tra GK","31","2","2024",False)
 def test_NE001009():
-    login("student", "sandbox")
-    accessToDashboard()
-    clickToNewevent()
+    start()
     fillToForm("kiem tra GK","3","2","2024",True,None,None,1,"1","1","2024")
     
 def test_NE001010():
-    login("student", "sandbox")
-    accessToDashboard()
-    clickToNewevent()
+    start()
     fillToForm("kiem tra GK","9","4","2024",True,"kiểm tra 45p","H6 112",2,None,None,None,"-1")
 def test_NE001011():
-    login("student", "sandbox")
-    accessToDashboard()
-    clickToNewevent()
+    start()
     fillToForm("kiem tra GK","9","4","2024",True,"kiểm tra 45p","H6 112",2,None,None,None,"999999999")
 def test_NE001012():
-    login("student", "sandbox")
-    accessToDashboard()
-    clickToNewevent()
+    start()
     fillToForm("kiem tra GK","9","4","2024",True,"kiểm tra 45p","H6 112",0,None,None,None,None,True,"-1") 
 def test_NE001013():
-    login("student", "sandbox")
-    accessToDashboard()
-    clickToNewevent()
+    start()
     fillToForm("kiem tra GK","9","4","2024",True,"kiểm tra 45p","H6 112",0,None,None,None,None,True,"2.5") 
 def test_NE001014():
-    login("student", "sandbox")
-    accessToDashboard()
-    clickToNewevent()
+    start()
     fillToForm("kiem tra GK","9","4","2024",True,"kiểm tra 45p","H6 112",0,None,None,None,None,True,"99999") 
+
+################################## mudule 2 ############################################
+def test_NE003001():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"15","4","2000")
+def test_NE003002():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"29","4","2000")
+def test_NE003003():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"30","4","2000")
+def test_NE003004():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"31","4","2000")
+def test_NE003005():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"15","4","1900")
+def test_NE003006():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"15","4","2004")
+def test_NE003007():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"15","4","1901")
+def test_NE003008():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"29","4","1900")
+def test_NE003009():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"29","4","2004")
+def test_NE003010():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"29","4","1901")
+def test_NE003011():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"30","4","1900")
+def test_NE003012():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"30","4","2004")
+def test_NE003013():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"30","4","1901")
+def test_NE003014():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"31","4","1900")
+def test_NE003015():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"31","4","2004")
+def test_NE003016():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"31","4","1901")
+def test_NE003017():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"15","1","2000")
+def test_NE003018():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"29","1","2000")
+def test_NE003019():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"30","1","2000")
+def test_NE003020():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"31","1","2000")
+def test_NE003021():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"15","1","1900")
+def test_NE003022():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"15","1","2004")
+def test_NE003023():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"15","1","1901")
+def test_NE003024():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"29","1","1900")
+def test_NE003025():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"29","1","2004")
+def test_NE003026():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"29","1","1901")
+def test_NE003027():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"30","1","1900")
+def test_NE003028():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"30","1","2004")
+def test_NE003029():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"30","1","1901")
+def test_NE003033():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"15","2","2000")
+def test_NE003034():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"29","2","2000")
+def test_NE003035():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"30","2","2000")
+def test_NE003036():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"31","2","2000")
+def test_NE003037():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"15","2","1900")
+def test_NE003038():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"15","2","2004")
+def test_NE003039():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"15","2","1901")
+def test_NE003040():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"29","2","1900")
+def test_NE003041():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"29","2","2004")
+def test_NE003042():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"29","2","1901")
+def test_NE003043():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"30","2","1900")
+def test_NE003044():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"30","2","2004")
+def test_NE003045():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"30","2","1901")
+def test_NE003046():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"31","2","1900")
+def test_NE003047():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"31","2","2004")
+def test_NE003048():
+    start()
+    fillToForm("kiem tra GK","1","4","2024",True,None,None,1,"31","2","1901")
+
+
+
+
+
+
+
+
+
+
