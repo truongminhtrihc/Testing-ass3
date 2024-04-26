@@ -1,70 +1,13 @@
-def convert_date_time(input_strings):
-    output_list = []
-
-    test_names = []
-    for i in range(1, 49):
-        test_names.append(f"test-{i}")
-    for i, string in enumerate(input_strings):
-        # Extracting the values within parentheses
-        values = string.split('(')[1].split(')')[0].split(',')
-        print(values)
-        day, month, year, hour, minute = map(int, values)
-        output_list.append([test_names[i], str(month), str(
-            day), str(year), str(hour), str(minute)])
-    return output_list
-
-
-input_str = """
-"(4,15,2000,10,10)"
-"(4,29,2000,10,10)"
-"(4,30,2000,10,10)"
-"(4,31,2000,10,10)"
-"(4,15,1900,10,10)"
-"(4,15,2004,10,10)"
-"(4,15,1901,10,10)"
-"(4,29,1900,10,10)"
-"(4,29,2004,10,10)"
-"(4,30,1900,10,10)"
-"(4,30,2004,10,10)"
-"(4,30,1901,10,10)"
-"(4,31,1900,10,10)"
-"(4,31,2004,10,10)"
-"(4,31,1901,10,10)"
-"(1,15,2000,10,10)"
-"(1,29,2000,10,10)"
-"(1,30,2000,10,10)"
-"(1,31,2000,10,10)"
-"(1,15,1900,10,10)"
-"(1,15,2004,10,10)"
-"(1,15,1901,10,10)"
-"(1,29,1900,10,10)"
-"(1,29,2004,10,10)"
-"(1,29,1901,10,10)"
-"(1,30,1900,10,10)"
-"(1,30,2004,10,10)"
-"(1,30,1901,10,10)"
-"(1,31,1900,10,10)"
-"(1,32,2004,10,10)"
-"(1,31,1901,10,10)"
-"(2,15,2000,10,10)"
-"(2,29,2000,10,10)"
-"(2,30,2000,10,10)"
-"(2,31,2000,10,10)"
-"(2,15,1900,10,10)"
-"(2,15,2004,10,10)"
-"(2,15,1901,10,10)"
-"(2,29,1900,10,10)"
-"(2,29,2004,10,10)"
-"(2,29,1901,10,10)"
-"(2,30,1900,10,10)"
-"(2,30,2004,10,10)"
-"(2,30,1901,10,10)"
-"(2,31,1900,10,10)"
-"(2,31,2004,10,10)"
-"(2,31,1901,10,10)"
-"""
-input_strings = [line.strip()
-                 for line in input_str.strip().split('\n') if line.strip()]
-
-output = convert_date_time(input_strings)
-print(output)
+## this is just a temporary
+### traing 
+for i in range(1,48):
+    input = f"""
+    @log
+    def test_{i}(self):
+            clickToNewevent(self.driver)
+            data =  self.lst[{i-1}]
+            title, day, month, year, hour, minute = data[0], data[1], data[2], data[3], data[4], data[5]
+            fillForm(self.driver, title, day, month, year, hour, minute)
+    """
+    print(input)
+    
