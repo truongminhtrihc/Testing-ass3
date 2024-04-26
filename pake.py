@@ -10,9 +10,12 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 # Create Chrome WebDriver instance
-service = Service(executable_path="./chromedriver")
+## run in Mac OS
+# service = Service(executable_path="./chromedriver")
+# driver = webdriver.Chrome(service=service)
+## run in Windows OS
+service = Service(executable_path="./chromedriver.exe")
 driver = webdriver.Chrome(service=service)
-
 # Access the webpage
 
 driver.get("https://sandbox.moodledemo.net/login/index.php")
