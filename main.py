@@ -1,4 +1,6 @@
+from pake import *
 from func1 import *
+from func2 import *
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
@@ -8,8 +10,7 @@ import time
 
 
 # Gọi các hàm test từ func1.py
-test_NE003001()
-
+test_CP002008()
 
 
 # Quit the WebDriver
