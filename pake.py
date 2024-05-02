@@ -1,3 +1,4 @@
+import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
@@ -11,11 +12,11 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 # Create Chrome WebDriver instance
 ## run in Mac OS
-# service = Service(executable_path="./chromedriver")
-# driver = webdriver.Chrome(service=service)
-## run in Windows OS
-service = Service(executable_path="./chromedriver.exe")
+service = Service(executable_path="./chromedriver")
 driver = webdriver.Chrome(service=service)
+## run in Windows OS
+# service = Service(executable_path="./chromedriver.exe")
+# driver = webdriver.Chrome(service=service)
 # Access the webpage
 
 driver.get("https://sandbox.moodledemo.net/login/index.php")
