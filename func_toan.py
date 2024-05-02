@@ -94,7 +94,7 @@ class Test_NewEventWithEquivalence(unittest.TestCase):
             password.submit()
             time.sleep(0.5)
         except TimeoutException:
-            print("Vui lòng thực hiện lại chức năng vì thời gian load phần tử quá lâu.")\
+            print("Vui lòng thực hiện lại chức năng vì thời gian load phần tử quá lâu.")
                 # Access Dashboard
         try:
             dashboard_link = WebDriverWait(self.driver, 20, 2).until(EC.element_to_be_clickable(
