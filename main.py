@@ -1,33 +1,43 @@
 import unittest
-from test_search import PythonOrgSearch
-from test_abc import PythonOrgSearchABC
+import argparse
 from func_toan import Test_NewEventWithEquivalence
-from func2 import Module1Test,Module2Test
-from func1 import Module2TestBoudary,Module1TestUsecase
+from changePassword import Module1Test, Module2Test
+from newevent import Module2TestBoudary, Module1TestUsecase
+
 def suite_func_toan():
     suite = unittest.TestSuite()
-    ## add tung test cu the -> prevent random testcase in your class :))
     for i in range(1, 48):
         suite.addTest(Test_NewEventWithEquivalence(f'test_{i}'))
     return suite
 
-def suite_func2():
+def suite_changePassword():
     suite = unittest.TestSuite()
     test_modules = [Module1Test, Module2Test]
     for module in test_modules:
         suite.addTest(unittest.makeSuite(module))
     return suite
-def suite_func1():
+
+def suite_newevent():
     suite = unittest.TestSuite()
-    test_modules = [Module1TestUsecase,Module2TestBoudary]
+    test_modules = [Module1TestUsecase, Module2TestBoudary]
     for module in test_modules:
         suite.addTest(unittest.makeSuite(module))
     return suite
 
 if __name__ == "__main__":
-    # Create runner
-    runner = unittest.TextTestRunner()
-    runner.run(suite_func1())
-    # runner.run(suite_func_toan())
-    # runner.run(suite_test_search())
-    # runner.run(suite_test_abc())
+    parser = argparse.ArgumentParser(description='Run specific test suite.')
+    parser.add_argument('test_suite', choices=['suite_func_toan', 'suite_changePassword', 'suite_newevent'],
+                        nargs='?', help='Choose which test suite to run.')
+    args = parser.parse_args()
+
+    if args.test_suite == 'suite_func_toan':
+        runner = unittest.TextTestRunner()
+        runner.run(suite_func_toan())
+    elif args.test_suite == 'suite_changePassword':
+        runner = unittest.TextTestRunner()
+        runner.run(suite_changePassword())
+    elif args.test_suite == 'suite_newevent':
+        runner = unittest.TextTestRunner()
+        runner.run(suite_newevent())
+    else:
+        parser.print_help()

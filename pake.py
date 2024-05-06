@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
 import time
-# Create Chrome WebDriver instance
+ # Create Chrome WebDriver instance
 ## run in Mac OS
 service = Service(executable_path="./chromedriver")
 driver = webdriver.Chrome(service=service)
@@ -19,4 +19,4 @@ driver = webdriver.Chrome(service=service)
 # driver = webdriver.Chrome(service=service)
 # Access the webpage
 
-driver.get("https://sandbox.moodledemo.net/login/index.php")
+driver.get("https://sandbox403.moodledemo.net/login/index.php")

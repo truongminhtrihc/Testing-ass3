@@ -215,7 +215,8 @@ class Module1TestUsecase(unittest.TestCase):
 class Module2TestBoudary(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        start()
+        # start()
+        print("#################### Module 2 ########################")
     def setUp(self):
         accessToDashboard()
         clickToNewevent()

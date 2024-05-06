@@ -9,7 +9,7 @@ def login(name , passw):
         password.submit()
         time.sleep(2)
     except TimeoutException:
-        print("Vui lòng thực hiện lại chức năng vì thời gian load phần tử quá lâu login.")
+        print("Vui lòng thực hiện lại chức năng vì thời gian load phần tử quá lâu")
    
 # open dropdown menu of User
 def openMenu():
@@ -21,7 +21,7 @@ def openMenu():
         prefer.click()
         time.sleep(2)
     except TimeoutException:
-        print("Vui lòng thực hiện lại chức năng vì thời gian load phần tử quá lâu open.")
+        print("Vui lòng thực hiện lại chức năng vì thời gian load phần tử quá lâu")
 # change password
 def changePassword(passwordCurr,newPassword1,newPassword2):
     try:
@@ -49,7 +49,7 @@ def changePassword(passwordCurr,newPassword1,newPassword2):
         time.sleep(4)
         
     except TimeoutException:
-        print("Vui lòng thực hiện lại chức năng vì thời gian load phần tử quá lâu change.")
+        print("Vui lòng thực hiện lại chức năng vì thời gian load phần tử quá lâu")
 ################################## mudule 1 ##########################################
 class Module1Test(unittest.TestCase):
     @classmethod
@@ -87,7 +87,8 @@ class Module1Test(unittest.TestCase):
 class Module2Test(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        login("student","sandbox")
+        # login("student","sandbox")
+        print("#################### Module 2 ########################")
     def test_CP002001(self):
         print("-------------test_CP002001-------------")
         # login("student","sandbox")
