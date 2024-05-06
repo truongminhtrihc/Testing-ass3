@@ -16,6 +16,7 @@ def suite_enrol_user():
     testlst = [1,2,3,5,6,7,8,9,10,11,12,13,14,15]
     for i in testlst:
         suite.addTest(Test_EnrolUser(f"test_UCT_{i}"))
+    return suite
 def suite_func2():
     suite = unittest.TestSuite()
     test_modules = [Module1Test, Module2Test]
