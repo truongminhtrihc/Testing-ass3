@@ -12,7 +12,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
  # Create Chrome WebDriver instance
 ## run in Mac OS
-service = Service(executable_path="./chromedriver")
+service = Service(executable_path="./chromedriver.exe")
 driver = webdriver.Chrome(service=service)
 ## run in Windows OS
 # service = Service(executable_path="./chromedriver.exe")
