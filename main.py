@@ -35,4 +35,4 @@ if __name__ == "__main__":
     runner = unittest.TextTestRunner()
     runner.run(suite_enrol_user())
     runner.run(suite_func1())
-    # runner.run(suite_func_toan())
+    runner.run(suite_func_toan())
