@@ -3,7 +3,7 @@ import argparse
 from func_toan import Test_NewEventWithEquivalence
 from changePassword import Module1Test, Module2Test
 from newevent import Module2TestBoudary, Module1TestUsecase
-
+from enrol_users import Test_EnrolUser
 def suite_func_toan():
     suite = unittest.TestSuite()
     for i in range(1, 48):
