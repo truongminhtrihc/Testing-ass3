@@ -4,6 +4,12 @@ from func_toan import Test_NewEventWithEquivalence
 from changePassword import Module1Test, Module2Test
 from newevent import Module2TestBoudary, Module1TestUsecase
 from enrol_users import Test_EnrolUser
+from func_dang import Test_Grade
+def suite_func_dang():
+    suite = unittest.TestSuite()
+    for i in range(1, 10):
+        suite.addTest(Test_Grade(f'test_{i}'))
+    return suite
 def suite_func_toan():
     suite = unittest.TestSuite()
     for i in range(1, 48):
@@ -31,7 +37,7 @@ def suite_newevent():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Run specific test suite.')
-    parser.add_argument('test_suite', choices=['suite_func_toan', 'suite_changePassword', 'suite_newevent', 'suite_enrolUser'],
+    parser.add_argument('test_suite', choices=['suite_func_toan', 'suite_changePassword', 'suite_newevent', 'suite_enrolUser', 'suite_func_dang'],
                         nargs='?', help='Choose which test suite to run.')
     args = parser.parse_args()
 
@@ -47,5 +53,8 @@ if __name__ == "__main__":
     elif args.test_suite == 'suite_enrolUser':
         runner = unittest.TextTestRunner()
         runner.run(suite_enrol_user())
+    elif args.test_suite == 'suite_func_dang':
+        runner = unittest.TextTestRunner()
+        runner.run(suite_func_dang())
     else:
         parser.print_help()
