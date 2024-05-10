@@ -8,7 +8,7 @@ from func_dang import Test_Grade
 def suite_func_dang():
     suite = unittest.TestSuite()
     for i in range(1, 10):
-        suite.addTest(Test_NewEventWithEquivalence(f'test_{i}'))
+        suite.addTest(Test_Grade(f'test_{i}'))
     return suite
 def suite_func_toan():
     suite = unittest.TestSuite()
