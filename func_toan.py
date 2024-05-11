@@ -80,7 +80,7 @@ def fillForm(driver, title, day, month, year, hour, minute):
 class Test_NewEventWithEquivalence(unittest.TestCase):
     def setUp(self):
         ## Preconditions for Test_NewEventWithEquivalence
-        service = Service(executable_path="./chromedriver")
+        service = Service(executable_path="./chromedriver.exe")
         self.driver = webdriver.Chrome(service=service)
         # Login account
         self.driver.get("https://sandbox.moodledemo.net/login/index.php")
